@@ -9,5 +9,5 @@ import ws.synopsis.entity.User;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User,Serializable>{
-	//public abstract User findById(int id);@
+	public abstract User findById(int id);
 }
