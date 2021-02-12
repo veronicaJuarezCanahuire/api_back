@@ -2,7 +2,6 @@ package ws.synopsis.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,16 +26,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserModel addUser(UserModel userModel) {
-		User user=userRepository.save(converterUser.converterUserModel2User(userModel));
+		User user = userRepository.save(converterUser.converterUserModel2User(userModel));
 		return converterUser.converterUser2UserModel(user);
 	}
 
 	@Override
 	public List<UserModel> listarallUser() {
-		List<User> listUser=userRepository.findAll();
-		List<UserModel> listUserModel=new ArrayList<UserModel>();
-		
-		for(User user: listUser) {
+		List<User> listUser = userRepository.findAll();
+		List<UserModel> listUserModel = new ArrayList<UserModel>();
+
+		for (User user : listUser) {
 			listUserModel.add(converterUser.converterUser2UserModel(user));
 		}
 		return listUserModel;
@@ -44,14 +43,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserModel findUserModelById(int id) {
-		User user=userRepository.findById(id);
+		User user = userRepository.findById(id);
 		return converterUser.converterUser2UserModel(user);
 	}
 
 	@Override
 	public void removeUser(int id) {
-		User user=userRepository.findById(id);
-		if(user!= null) {
+		User user = userRepository.findById(id);
+		if (user != null) {
 			userRepository.delete(user);
 		}
 
@@ -59,15 +58,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findUserById(int id) {
-		
+
 		return userRepository.findById(id);
 	}
 
 	@Override
 	public UserModel update(UserModel userModel) {
-		User user=userRepository.save(converterUser.converterUserModel2User(userModel));
+		User user = userRepository.save(converterUser.converterUserModel2User(userModel));
 		return converterUser.converterUser2UserModel(user);
-	
+
 	}
 
 }

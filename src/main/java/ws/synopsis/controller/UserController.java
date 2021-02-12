@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ws.synopsis.entity.User;
 import ws.synopsis.model.UserModel;
 import ws.synopsis.service.UserService;
 
@@ -27,26 +26,31 @@ public class UserController {
 	@Qualifier("UserServiceImpl")
 	private UserService userService;
 
+	
 	@PostMapping("/add")
 	public void addUser(@RequestBody UserModel userModel) {
 		userService.addUser(userModel);
 	}
+
 
 	@GetMapping("/list")
 	public List<UserModel> list() {
 		return userService.listarallUser();
 	}
 
+	
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable("id") int id) {
 		userService.removeUser(id);
 	}
+
 
 	@PutMapping("/update")
 	public void update(@RequestBody UserModel userModel) {
 		userService.update(userModel);
 
 	}
+
 
 	@GetMapping("/find/{id}")
 	public UserModel findId(@PathVariable("id") int id) {
