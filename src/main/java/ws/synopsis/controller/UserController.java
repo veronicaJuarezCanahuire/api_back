@@ -2,8 +2,11 @@ package ws.synopsis.controller;
 
 import java.util.List;
 
+import org.apache.coyote.http11.Http11Processor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,34 +31,34 @@ public class UserController {
 
 	
 	@PostMapping("/add")
-	public void addUser(@RequestBody UserModel userModel) {
-		userService.addUser(userModel);
+	public ResponseEntity<UserModel> addUser(@RequestBody UserModel userModel) {
+		return new ResponseEntity(userService.addUser(userModel), HttpStatus.OK);
 	}
 
-
 	@GetMapping("/list")
-	public List<UserModel> list() {
-		return userService.listarallUser();
+	public ResponseEntity<List<UserModel>> list() {
+		return new ResponseEntity(userService.listarallUser(),HttpStatus.OK) ;
 	}
 
 	
 	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable("id") int id) {
-		userService.removeUser(id);
+	public ResponseEntity<String> delete(@PathVariable("id") int id) {
+		return new ResponseEntity("Usuario Eliminado", HttpStatus.OK);
 	}
 
 
 	@PutMapping("/update")
-	public void update(@RequestBody UserModel userModel) {
-		userService.update(userModel);
+	public ResponseEntity<UserModel> update(@RequestBody UserModel userModel) {
+		return new ResponseEntity(userService.update(userModel),HttpStatus.OK) ;
 
 	}
 
 
 	@GetMapping("/find/{id}")
-	public UserModel findId(@PathVariable("id") int id) {
+	public ResponseEntity<UserModel> findId(@PathVariable("id") int id) {
 
-		return userService.findUserModelById(id);
+		return new ResponseEntity(userService.findUserModelById(id),HttpStatus.OK);
 	}
+	
 
 }

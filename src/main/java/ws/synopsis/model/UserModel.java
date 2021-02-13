@@ -1,11 +1,23 @@
 package ws.synopsis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserModel {
 
+	@JsonProperty
 	private int id;
+
+	@JsonProperty
 	private String name;
+
+	@JsonProperty
 	private String lastname;
+
+	@JsonProperty
 	private int telephone;
+	
+	@JsonProperty
 	private String password;
 
 	public UserModel(int id, String name, String lastname, int telephone, String password) {
@@ -14,6 +26,7 @@ public class UserModel {
 		this.name = name;
 		this.lastname = lastname;
 		this.telephone = telephone;
+
 		this.password = password;
 	}
 
@@ -53,6 +66,7 @@ public class UserModel {
 		this.telephone = telephone;
 	}
 
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}

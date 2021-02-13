@@ -15,7 +15,7 @@ public class ConverterUser {
 		user.setName(userModel.getName());
 		user.setLastname(userModel.getLastname());
 		user.setTelephone(userModel.getTelephone());
-		user.setPassword(userModel.getPassword());
+		user.setPassword("");
 
 		return user;
 	}
@@ -26,7 +26,7 @@ public class ConverterUser {
 		userModel.setName(user.getName());
 		userModel.setLastname(user.getLastname());
 		userModel.setTelephone(user.getTelephone());
-		userModel.setPassword(user.getPassword());
+		userModel.setPassword("password succes");
 
 		return userModel;
 	}
